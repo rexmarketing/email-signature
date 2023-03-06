@@ -28,7 +28,8 @@ display: block;
 margin-bottom: 8px;
 }
 
-input[type="text"] {
+input[type="text"],
+input[type="url"] {
 border: none;
 border-radius: 4px;
 padding: 12px 16px;
@@ -38,7 +39,8 @@ background-color: #f4f4f4;
 margin-bottom: 24px;
 }
 
-input[type="text"]:focus {
+input[type="text"]:focus,
+input[type="url"]:focus {
 outline: none;
 box-shadow: 0 0 0 2px #1371b3;
 }
@@ -109,6 +111,10 @@ border: 1px solid #091a3c;
   <br />
   <input type="text" id="role" placeholder="Enter your role" />
   <br />
+  <input type="text" id="phone" placeholder="Enter your Phone Number (If applicable)" />
+  <br />
+   <input type="url" id="meetingURL" placeholder="Enter your Meeting Link (If applicable)" />
+  <br />
   <input type="button" value="Generate HTML" onclick="generateHtml()" />
   <input type="button" value="Copy to Clipboard" onclick="copyToClipboard()" />
 </form>
@@ -119,13 +125,27 @@ border: 1px solid #091a3c;
       const firstName = document.getElementById("firstName").value;
       const lastName = document.getElementById("lastName").value;
       const role = document.getElementById("role").value;
+      const phone = document.getElementById("phone").value;
+      const meetingURL = document.getElementById("meetingURL").value;
       var avatarURL = (firstName + "-" + lastName).toLowerCase();
       function removeAvatarIfNotAvailable() {
         const avatarImg = document.querySelector('.photo');
         if (avatarImg && avatarImg.complete && avatarImg.naturalHeight === 0) {
           avatarImg.closest('td').remove();
         }
-}html = `
+}
+        // Check if the meeting URL is provided
+  const meetingURLProvided = meetingURL.trim().length > 0;
+
+  // Generate HTML based on whether the meeting URL is provided or not
+  const meetingHTML = meetingURLProvided ? `<br>
+            <span id="bookMeeting" class="bookMeeting" style="display:inline;"><a href="tel:${meetingURL}" style="font-weight:normal; font-size: 16px; line-height: 22px; color: #71747A; text-decoration: none;"> 
+&#128197; Book a meeting with me</a></span>` : '';
+      
+       const numberProvided = phone.trim().length > 0;
+      
+      const numberHTML = numberProvided ? `<span id="number" class="number" style="display:inline; font-weight:normal; font-size: 16px; line-height: 22px; color: #71747A;">— <a href="tel:${phone}">${phone}</a></span>` : '';
+      html = `
         <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/REC-html40/loose.dtd">
 <html>
   <head>
@@ -154,12 +174,14 @@ border: 1px solid #091a3c;
             <span id="fname" class="fname" style="display:inline; font-size: 16px; line-height: 22px; color: #0F2C65;font-weight: bold;">${firstName}</span>&nbsp;<span id="lname" class="lname" style="display:inline; font-size: 16px; line-height: 22px; color: #0F2C65;font-weight: bold;">${lastName}</span>
             <br>
             <span id="position" class="position" style="display:inline; font-weight:normal; font-size: 16px; line-height: 22px; color: #71747A;">${role}</span>
+            ${numberHTML}
+            ${meetingHTML}
           </td>
         </tr>
         <tr>
           <td colspan="2" style="text-align: left;vertical-align:center;"><a href="https://www.rexsoftware.com"><img src="https://7804200.fs1.hubspotusercontent-na1.net/hubfs/7804200/Staff-Email-Signature/Rex-Logo.gif" height="40" width="101" style="display:inline;" alt="Rex Logo"></a></td>
           <td colspan="2" style="text-align:left;vertical-align: center; padding-left: 20px;padding-bottom: 6px;">
-            <p style="display:inline; font-size: 13px; line-height: 15px;">Helping property professionals globally succeed since 2010.</p>
+            <p style="display:inline; font-size: 13px; line-height: 15px;">Together in partnership with agents, we help people find, change and make home.</p>
           </td>
         </tr>
         <tr>
