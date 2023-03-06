@@ -139,7 +139,7 @@ border: 1px solid #091a3c;
 
   // Generate HTML based on whether the meeting URL is provided or not
   const meetingHTML = meetingURLProvided ? `<br>
-            <span id="bookMeeting" class="bookMeeting" style="display:inline;"><a href="tel:${meetingURL}" style="font-weight:normal; font-size: 16px; line-height: 22px; color: #71747A; text-decoration: none;"> 
+            <span id="bookMeeting" class="bookMeeting" style="display:inline;"><a href="${meetingURL}" style="font-weight:normal; font-size: 16px; line-height: 22px; color: #71747A; text-decoration: none;"> 
 &#128197; Book a meeting with me</a></span>` : '';
       
        const numberProvided = phone.trim().length > 0;
