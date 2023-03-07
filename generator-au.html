@@ -88,6 +88,27 @@
          box-shadow: none;
          border: 1px solid #091a3c;
          }
+        label[for="hideAvatar"] {
+    font-family: "Inter", sans-serif;
+    font-size: 16px;
+    margin-bottom: 8px;
+}
+
+#hideAvatar {
+  border: none;
+  border-radius: 4px;
+  padding: 12px 16px;
+  width: 100%;
+  font-size: 16px;
+  background-color: #f4f4f4;
+  margin-bottom: 24px;
+}
+
+#hideAvatar:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px #1371b3;
+}
+
       </style>
    </head>
    <body style="display: flex; align-items: center; justify-content: center; height: 100vh;">
@@ -102,6 +123,12 @@
          <br />
          <input type="url" id="meetingURL" placeholder="Enter your Meeting Link (If applicable)" />
          <br />
+        <label for="hideAvatar">Hide Headshot:</label>
+<select id="hideAvatar" name="hideAvatar">
+  <option value="false" selected>No</option>
+  <option value="true">Yes</option>
+</select>
+        <br />
          <input type="button" value="Generate HTML" onclick="generateHtml()" />
          <input type="button" value="Copy HTML" onclick="copyToClipboard()" />
          <input type="button" value="Copy Signature" onclick="copyToClipboardOnly()" />
@@ -122,6 +149,12 @@
                avatarImg.closest('td').remove();
              }
          }
+        const hideAvatar = document.getElementById("hideAvatar").value === "true";
+if (hideAvatar) {
+  avatarURL = "";
+  removeAvatarIfNotAvailable();
+}
+
              // Check if the meeting URL is provided
          const meetingURLProvided = meetingURL.trim().length > 0;
          
@@ -134,7 +167,7 @@
            
            const numberHTML = numberProvided ? `<span id="number" class="number" style="display:inline; font-weight:normal; font-size: 16px; line-height: 22px; color: #71747A;">— <a href="tel:${phone}">${phone}</a></span>` : '';
            html = `
-             <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/REC-html40/loose.dtd">
+            <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/REC-html40/loose.dtd">
          <html>
          <head>
          <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
