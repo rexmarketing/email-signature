@@ -11,13 +11,20 @@ if (!isset($_SESSION["authorized"]) || !$_SESSION["authorized"]) {
         // Password is correct, set authorized session variable
         $_SESSION["authorized"] = true;
     } else {
-        // Password is not correct, show password form
+        // Password is not correct, show password prompt
         echo '
-            <form method="post">
-                <label for="password">Password:</label>
-                <input type="password" name="password">
-                <input type="submit" value="Submit">
-            </form>
+            <script>
+                var password = window.prompt("Please enter the password:");
+                if (password == "'.$correct_password.'") {
+                    // Password is correct, set authorized session variable
+                    window.location.reload();
+                    '.$_SESSION["authorized"] = true.';
+                } else {
+                    // Password is not correct, show error message
+                    window.alert("Incorrect password, please try again.");
+                    window.location.reload();
+                }
+            </script>
         ';
         // Stop execution so the rest of the page is not displayed
         exit();
