@@ -90,7 +90,7 @@ if ($_POST["password"] != $correct_password) {
     // Password form was not submitted or incorrect password was provided
     if (!isset($_SESSION["authorized"]) || !$_SESSION["authorized"]) {
         // User has not yet entered the correct password in this session
-        $_SESSION["return_url"] = $_SERVER["REQUEST_URI"];
+        $_SESSION['redirect_url'] = $_SERVER['REQUEST_URI'];
         echo '
             <form method="post">
                 <label for="password">Password:</label>
@@ -98,23 +98,22 @@ if ($_POST["password"] != $correct_password) {
                 <input type="submit" value="Submit">
             </form>
         ';
-    } else {
-        // User has already entered the correct password in this session
-        header("Location: protected.php");
         exit();
-    }
+    } 
 } else {
     // User entered the correct password
     $_SESSION["authorized"] = true;
-    if (isset($_SESSION["return_url"])) {
-        $return_url = $_SESSION["return_url"];
-        unset($_SESSION["return_url"]);
-        header("Location: $return_url");
+    if(isset($_SESSION['redirect_url'])) {
+        $redirect_url = $_SESSION['redirect_url'];
+        unset($_SESSION['redirect_url']);
+        header("Location: $redirect_url");
+        exit();
     } else {
         header("Location: protected.php");
+        exit();
     }
-    exit();
 }
+
 ?>
 
 		</div>
