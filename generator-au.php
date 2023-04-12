@@ -1,9 +1,12 @@
 <?php
 session_start();
 
-if (!isset($_SESSION["authenticated"]) || !$_SESSION["authenticated"]) {
-    header("Location: login.php");
-    exit;
+// Check if user is authenticated
+if (!isset($_SESSION["authorized"]) || !$_SESSION["authorized"]) {
+    // User is not authenticated, save the current URL as the redirect URL and redirect to the password page
+    $_SESSION["redirect_url"] = $_SERVER["REQUEST_URI"];
+    header("Location: password.php");
+    exit();
 }
 ?>
 
