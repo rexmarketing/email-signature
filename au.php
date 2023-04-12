@@ -82,25 +82,31 @@
 <body>
 	<div class="container">
 		<div class="region-box">
-			<?php
-				$correct_password = "password123"; // Set your desired password here
+<?php
+session_start();
+$correct_password = "password123"; // Set your desired password here
 
-				if ($_POST["password"] != $correct_password) {
-				    echo '
-				        <form method="post">
-				            <h1>Protected Content</h1>
-				            <label for="password">Password:</label>
-				            <input type="password" name="password"><br><br>
-				            <div class="region-buttons">
-				            	<button type="submit"><span class="flag">&#x1F1FA;&#x1F1F8;</span>Submit</button>
-				            </div>
-				        </form>
-				    ';
-				} else {
-				    // Display the protected content (an HTML page)
-				    echo file_get_contents("generator-au.html");
-				}
-			?>
+if ($_POST["password"] != $correct_password) {
+    // Password form was not submitted or incorrect password was provided
+    if (!isset($_SESSION["authorized"]) || !$_SESSION["authorized"]) {
+        // User has not yet entered the correct password in this session
+        echo '
+            <form method="post">
+                <label for="password">Password:</label>
+                <input type="password" name="password">
+                <input type="submit" value="Submit">
+            </form>
+        ';
+    } else {
+        // User has already entered the correct password in this session
+        echo file_get_contents("protected.html");
+    }
+} else {
+    // User entered the correct password
+    $_SESSION["authorized"] = true;
+    echo file_get_contents("protected.html");
+}
+?>
 		</div>
 	</div>
 </body>
