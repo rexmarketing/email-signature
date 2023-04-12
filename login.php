@@ -86,10 +86,23 @@
 session_start();
 $correct_password = "password123"; // Set your desired password here
 
-if ($_POST["password"] != $correct_password) {
-    // Password form was not submitted or incorrect password was provided
-    if (!isset($_SESSION["authorized"]) || !$_SESSION["authorized"]) {
-        // User has not yet entered the correct password in this session
+// Check if user is already authenticated
+if (isset($_SESSION["authorized"]) && $_SESSION["authorized"]) {
+    // User is authenticated, do nothing and continue to protected page
+} else {
+    // User is not authenticated, check password
+    if ($_POST["password"] == $correct_password) {
+        // User entered the correct password
+        $_SESSION["authorized"] = true;
+        // Redirect to the saved URL or the protected page if none saved
+        $redirect_url = isset($_SESSION["redirect_url"]) ? $_SESSION["redirect_url"] : "protected.php";
+        header("Location: " . $redirect_url);
+        exit();
+    } else {
+        // Password form was not submitted or incorrect password was provided
+        // Save the current URL as the redirect URL in session
+        $_SESSION["redirect_url"] = $_SERVER["REQUEST_URI"];
+        // Display password form
         echo '
             <form method="post">
                 <label for="password">Password:</label>
@@ -97,16 +110,11 @@ if ($_POST["password"] != $correct_password) {
                 <input type="submit" value="Submit">
             </form>
         ';
-    } else {
-        // User has already entered the correct password in this session
-        echo file_get_contents("protected.html");
+        exit(); // Stop script execution to prevent further code execution
     }
-} else {
-    // User entered the correct password
-    $_SESSION["authorized"] = true;
-    echo file_get_contents("protected.html");
 }
 ?>
+
 		</div>
 	</div>
 </body>
