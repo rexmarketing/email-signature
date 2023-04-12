@@ -1,14 +1,32 @@
 <?php
 session_start();
 
-// Check if user is authenticated
+// Change this to your desired password
+$correct_password = "mypassword";
+
+// Check if user is already authorized
 if (!isset($_SESSION["authorized"]) || !$_SESSION["authorized"]) {
-    // User is not authenticated, save the current URL as the redirect URL and redirect to the password page
-    $_SESSION["redirect_url"] = $_SERVER["REQUEST_URI"];
-    header("Location: password.php");
-    exit();
+    // User is not yet authorized, check if password has been submitted
+    if (isset($_POST["password"]) && $_POST["password"] == $correct_password) {
+        // Password is correct, set authorized session variable
+        $_SESSION["authorized"] = true;
+    } else {
+        // Password is not correct, show password form
+        echo '
+            <form method="post">
+                <label for="password">Password:</label>
+                <input type="password" name="password">
+                <input type="submit" value="Submit">
+            </form>
+        ';
+        // Stop execution so the rest of the page is not displayed
+        exit();
+    }
 }
+
+// If the code reaches this point, the user is authorized and can access the protected content
 ?>
+
 
 <!DOCTYPE html>
 <html>
