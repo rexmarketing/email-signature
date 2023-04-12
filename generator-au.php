@@ -11,20 +11,13 @@ if (!isset($_SESSION["authorized"]) || !$_SESSION["authorized"]) {
         // Password is correct, set authorized session variable
         $_SESSION["authorized"] = true;
     } else {
-        // Password is not correct, show password prompt
+        // Password is not correct, show password form
         echo '
-            <script>
-                var password = window.prompt("Please enter the password:");
-                if (password == "'.$correct_password.'") {
-                    // Password is correct, set authorized session variable
-                    window.location.reload();
-                    '.$_SESSION["authorized"] = true.';
-                } else {
-                    // Password is not correct, show error message
-                    window.alert("Incorrect password, please try again.");
-                    window.location.reload();
-                }
-            </script>
+            <form method="post">
+                <label for="password">Password:</label>
+                <input type="password" name="password">
+                <input type="submit" value="Submit">
+            </form>
         ';
         // Stop execution so the rest of the page is not displayed
         exit();
@@ -33,6 +26,7 @@ if (!isset($_SESSION["authorized"]) || !$_SESSION["authorized"]) {
 
 // If the code reaches this point, the user is authorized and can access the protected content
 ?>
+
 
 
 <!DOCTYPE html>
