@@ -2,7 +2,7 @@
 session_start();
 
 // Change this to your desired password
-$correct_password = "mypassword";
+$correct_password = "R3xL4bs!";
 
 // Check if user is already authorized
 if (!isset($_SESSION["authorized"]) || !$_SESSION["authorized"]) {
@@ -13,11 +13,13 @@ if (!isset($_SESSION["authorized"]) || !$_SESSION["authorized"]) {
     } else {
         // Password is not correct, show password form
         echo '
+        <center>
             <form method="post">
                 <label for="password">Password:</label>
                 <input type="password" name="password">
                 <input type="submit" value="Submit">
             </form>
+            </center>
         ';
         // Stop execution so the rest of the page is not displayed
         exit();
