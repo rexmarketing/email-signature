@@ -84,10 +84,10 @@
 		<div class="region-box">
 			<h1>Which region are you from?</h1>
 			<div class="region-buttons">
-				<button onclick="window.location.href='generator-uk.html'">
+				<button onclick="window.location.href='generator-uk.php'">
 					<img class="flag" src="https://cdn.countryflags.com/thumbs/united-kingdom/flag-round-250.png" alt="UK Flag"> United Kingdom
 				</button>
-				<button onclick="window.location.href='generator-au.html'">
+				<button onclick="window.location.href='generator-au.php'">
 					<img class="flag" src="https://cdn.countryflags.com/thumbs/australia/flag-round-250.png" alt="Australia Flag"> Australia/New Zealand
 				</button>
 			</div>
