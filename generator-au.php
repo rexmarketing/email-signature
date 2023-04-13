@@ -163,7 +163,7 @@ if (!isset($_SESSION["authorized"]) || !$_SESSION["authorized"]) {
   <option value="true">Yes</option>
 </select>
         <br />
-         <input type="button" value="Generate HTML" onclick="generateHtml()" />
+         <input type="button" value="Generate" onclick="generateHtml()" />
          <input type="button" value="Copy HTML" onclick="copyToClipboard()" />
          <input type="button" value="Copy Signature" onclick="copyToClipboardOnly()" />
       </form>
