@@ -295,7 +295,7 @@ London, EC2Y 9DT
         Company Number: 11241778</p>
     </td><td width="50%" style="text-align: left;">
       <p><b>Brisbane</b></p>
-      <p style="color: #71747A;">29b Helen Street, Newstead,<br>
+      <p style="color: #71747A;">Waterloo Junction,<br>Level 1/4-12 Commercial Rd, Newstead,<br>
       Brisbane, 4006.<br>
       ABN: 97 145 420 284</p>
     </td>
