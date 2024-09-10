@@ -2,7 +2,7 @@
 session_start();
 
 // Change this to your desired password
-$correct_password = "R3xL4bs!";
+$correct_password = "R3xEmA1l!";
 
 // Check if user is already authorized
 if (!isset($_SESSION["authorized"]) || !$_SESSION["authorized"]) {
@@ -259,10 +259,10 @@ if (hideAvatar) {
   </td>
   <td width="100%" style="text-align: left; vertical-align: middle;">
 <br>
-    <a href="https://www.rexsoftware.com/rex-crm"><img src="https://7804200.fs1.hubspotusercontent-na1.net/hubfs/7804200/Staff-Email-Signature/Sales-Rentals-Dark-Mode.png" height="26" width="102" style="max-width: 102px !important; max-height: 26px !important; vertical-align: middle; padding-right:10px;" alt="Rex Sales and Rentals CRM"></a>&nbsp;
-    <a href="https://www.rexsoftware.com/property-management"><img src="https://7804200.fs1.hubspotusercontent-na1.net/hubfs/7804200/Staff-Email-Signature/PM-Dark-Mode.png" height="26" width="105" style="max-width: 105px !important; max-height: 26px !important; vertical-align: middle; padding-right:10px;" alt="Rex Property Management"></a>&nbsp;
-    <a href="https://www.rexsoftware.com/reach"><img src="https://7804200.fs1.hubspotusercontent-na1.net/hubfs/7804200/Staff-Email-Signature/Reach-Dark-Mode.png" height="26" width="67" style="max-width: 67px !important; max-height: 26px !important; vertical-align: middle; padding-right:10px;" alt="Rex Reach"></a>&nbsp;
-    <a href="https://www.rexsoftware.com/websites"><img src="https://7804200.fs1.hubspotusercontent-na1.net/hubfs/7804200/Staff-Email-Signature/Websites-Dark-Mode.png" height="26" width="84" style="max-width: 84px !important; max-height: 26px !important; vertical-align: middle;" alt="Rex Websites"></a>
+    <a href="https://www.rexsoftware.com/products/real-estate-crm"><img src="https://7804200.fs1.hubspotusercontent-na1.net/hubfs/7804200/Staff-Email-Signature/Sales-Rentals-Dark-Mode.png" height="26" width="102" style="max-width: 102px !important; max-height: 26px !important; vertical-align: middle; padding-right:10px;" alt="Rex Sales and Rentals CRM"></a>&nbsp;
+    <a href="https://www.rexsoftware.com/products/property-management"><img src="https://7804200.fs1.hubspotusercontent-na1.net/hubfs/7804200/Staff-Email-Signature/PM-Dark-Mode.png" height="26" width="105" style="max-width: 105px !important; max-height: 26px !important; vertical-align: middle; padding-right:10px;" alt="Rex Property Management"></a>&nbsp;
+    <a href="https://www.rexsoftware.com/products/real-estate-marketing"><img src="https://7804200.fs1.hubspotusercontent-na1.net/hubfs/7804200/Staff-Email-Signature/Reach-Dark-Mode.png" height="26" width="67" style="max-width: 67px !important; max-height: 26px !important; vertical-align: middle; padding-right:10px;" alt="Rex Reach"></a>&nbsp;
+    <a href="https://www.rexsoftware.com/products/real-estate-websites"><img src="https://7804200.fs1.hubspotusercontent-na1.net/hubfs/7804200/Staff-Email-Signature/Websites-Dark-Mode.png" height="26" width="84" style="max-width: 84px !important; max-height: 26px !important; vertical-align: middle;" alt="Rex Websites"></a>
       <br>
       <br>
   </td>
@@ -280,11 +280,7 @@ if (hideAvatar) {
 </div>
 </td>
              </tr>
-               <tr>
-    <td colspan="4">
-      <img width="600" src="https://2jvr.short.gy/UwLBuS" alt="Banner Image" style="display:block; width:600px; height:auto;">
-    </td>
-  </tr>
+              
   </tbody>
              </table>
   <table width="600" cellpadding="0" cellspacing="0" style="font-family:Helvetica,Arial,sans-serif; font-size: 12px; line-height: 16px; color: #0F2C65; text-align:left;">
@@ -297,9 +293,8 @@ if (hideAvatar) {
       
     </td><td width="50%" style="text-align: left;">
       <p><b>London</b><br></p>
-      <p style="color: #71747A;">Moorplace<br>
-1 Fore Street Avenue<br>
-London, EC2Y 9DT
+      <p style="color: #71747A;">3rd Floor, 51 Moorgate,<br>
+London, EC2R 5BJ.
         <br>
         Company Number: 11241778</p>
     </td>
